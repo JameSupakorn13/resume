@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Developer Resume</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons for modern icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6', // Blue-500
+                        darkBg: '#111827', // Gray-900
+                        darkCard: '#1f2937', // Gray-800
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* A4 Paper setup for standard web view and print */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        body {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .paper-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Hide specific elements during print */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-padding {
+                padding: 1.5cm !important;
+            }
+            body {
+                background-color: white !important;
+            }
+            .dark-mode-override {
+                background-color: white !important;
+                color: black !important;
+            }
+            .paper-shadow {
+                box-shadow: none !important;
+            }
+            .print-border-b {
+                border-bottom-color: #e5e7eb !important;
+            }
+        }
+        
+        /* Smooth transitions for Dark Mode */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased font-sans flex justify-center py-10 print:py-0">
+
+    <div class="fixed top-6 right-6 flex gap-3 no-print z-50">
+        <!-- Dark Mode Toggle -->
+        <button id="themeToggle" onclick="toggleTheme()" class="w-12 h-12 flex items-center justify-center bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all border border-gray-200 dark:border-gray-700">
+            <i class="ph ph-moon text-xl" id="themeIcon"></i>
+        </button>
+        <!-- Print / PDF Button -->
+        <button onclick="window.print()" class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:shadow-xl hover:bg-blue-600 hover:scale-105 transition-all">
+            <i class="ph ph-printer text-xl"></i>
+        </button>
+    </div>
+
+    <div class="w-full max-w-[21cm] min-h-[29.7cm] bg-white dark:bg-darkCard paper-shadow print-padding p-10 sm:p-14 relative overflow-hidden dark-mode-override">
+        
+        <!-- Header Section -->
+        <header class="border-b-2 border-primary pb-6 mb-6 print-border-b">
+            <div class="flex flex-col-reverse sm:flex-row justify-between items-center sm:items-start gap-6">
+                <div class="w-full sm:w-2/3 flex flex-col gap-4">
+                    <div class="text-center sm:text-left">
+                        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white dark-mode-override">
+                            Poompat SoftwareDev
+                        </h1>
+                        <h2 class="text-xl sm:text-2xl font-medium text-primary mt-2">
+                            Senior Full-Stack Developer
+                        </h2>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="flex flex-col gap-2 text-sm text-gray-600 dark:text-gray-400 dark-mode-override items-center sm:items-start">
+                        <a href="mailto:poompat.dev@email.com" class="flex items-center gap-2 hover:text-primary transition-colors">
+                            <i class="ph ph-envelope-simple text-lg text-primary"></i>
+                            poompat.dev@email.com
+                        </a>
+                        <a href="tel:+66991234567" class="flex items-center gap-2 hover:text-primary transition-colors">
+                            <i class="ph ph-phone text-lg text-primary"></i>
+                            +66 99 123 4567
+                        </a>
+                        <a href="https://github.com" target="_blank" class="flex items-center gap-2 hover:text-primary transition-colors">
+                            <i class="ph ph-github-logo text-lg text-primary"></i>
+                            github.com/poompat-dev
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="flex items-center gap-2 hover:text-primary transition-colors">
+                            <i class="ph ph-linkedin-logo text-lg text-primary"></i>
+                            linkedin.com/in/poompat-dev
+                        </a>
+                        <div class="flex items-center gap-2">
+                            <i class="ph ph-map-pin text-lg text-primary"></i>
+                            <span>Bangkok, Thailand</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Image Placeholder -->
+                <div class="w-32 h-32 sm:w-40 sm:h-40 shrink-0 rounded-2xl overflow-hidden border-4 border-gray-100 dark:border-gray-700 shadow-sm bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative">
+                    <i class="ph ph-user text-5xl text-gray-400 dark:text-gray-500 absolute z-0"></i>
+                    <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo" alt="Profile Picture" class="w-full h-full object-cover relative z-10" />
+                </div>
+            </div>
+        </header>
+
+        <section class="mb-8">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white dark-mode-override mb-3 flex items-center gap-2">
+                <i class="ph ph-user text-primary"></i>
+                <span>Professional Summary</span>
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 dark-mode-override leading-relaxed text-sm sm:text-base">
+                Passionate Software Developer with 5+ years of experience in building robust, scalable web applications. Proficient in modern JavaScript frameworks (React, Node.js) and cloud technologies (AWS). Adept at leading teams through the full software development lifecycle (SDLC) and delivering high-quality solutions that meet business objectives.
+            </p>
+        </section>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            
+            <div class="sm:col-span-1 space-y-8">
+                
+                <!-- Skills Section -->
+                <section>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white dark-mode-override mb-4 flex items-center gap-2">
+                        <i class="ph ph-code text-primary"></i>
+                        <span>Core Skills</span>
+                    </h3>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 dark:text-gray-200 dark-mode-override text-sm mb-2">Languages</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">JavaScript</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">TypeScript</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">Python</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">SQL / NoSQL</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 dark:text-gray-200 dark-mode-override text-sm mb-2">Frameworks / Libraries</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">React.js</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">Next.js</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">Node.js</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">Express</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">Tailwind CSS</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold text-gray-800 dark:text-gray-200 dark-mode-override text-sm mb-2">Tools & Platforms</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">Git & GitHub</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">Docker</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">AWS (EC2, S3)</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 dark-mode-override text-gray-700 dark:text-gray-300 rounded text-xs font-medium">Figma</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white dark-mode-override mb-4 flex items-center gap-2">
+                        <i class="ph ph-graduation-cap text-primary"></i>
+                        <span>Education</span>
+                    </h3>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 dark:text-gray-200 dark-mode-override">B.S. Computer Science</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 dark-mode-override">University of Technology</p>
+                        <p class="text-xs text-primary mt-1">2016 - 2020</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 dark-mode-override mt-1">GPA: 3.80 (First-Class Honors)</p>
+                    </div>
+                </section>
+                
+                <!-- Languages Section -->
+                <section>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white dark-mode-override mb-4 flex items-center gap-2">
+                        <i class="ph ph-translate text-primary"></i>
+                        <span>Languages</span>
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300 dark-mode-override">
+                        <li class="flex justify-between">
+                            <span>Thai</span>
+                            <span class="font-medium text-gray-500">Native</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>English</span>
+                            <span class="font-medium text-gray-500">Professional</span>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+
+            <div class="sm:col-span-2 space-y-8">
+                
+                <!-- Experience Section -->
+                <section>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white dark-mode-override mb-5 flex items-center gap-2">
+                        <i class="ph ph-briefcase text-primary"></i>
+                        <span>Work Experience</span>
+                    </h3>
+                    
+                    <!-- Job 1 -->
+                    <div class="mb-6 relative border-l-2 border-gray-200 dark:border-gray-700 dark-mode-override pl-4 ml-2">
+                        <div class="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-1.5 border-2 border-white dark:border-gray-800 dark-mode-override"></div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-gray-100 dark-mode-override">Senior Full-Stack Developer</h4>
+                        <div class="flex flex-wrap justify-between items-center mt-1 mb-2">
+                            <p class="text-sm font-medium text-gray-600 dark:text-gray-400 dark-mode-override">Tech Solutions Co., Ltd.</p>
+                            <span class="text-xs bg-blue-50 dark:bg-blue-900/30 text-primary px-2 py-1 rounded font-medium">Jan 2022 - Present</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-gray-700 dark:text-gray-300 dark-mode-override space-y-1.5">
+                            <li>Led a team of 4 developers to build a microservices-based e-commerce platform using Next.js and Node.js.</li>
+                            <li>Improved API response time by 40% through Redis caching and SQL query optimization.</li>
+                            <li>Implemented CI/CD pipelines using GitHub Actions, reducing deployment time by 50%.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Job 2 -->
+                    <div class="mb-6 relative border-l-2 border-gray-200 dark:border-gray-700 dark-mode-override pl-4 ml-2">
+                        <div class="absolute w-3 h-3 bg-gray-300 dark:bg-gray-600 rounded-full -left-[7px] top-1.5 border-2 border-white dark:border-gray-800 dark-mode-override"></div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-gray-100 dark-mode-override">Frontend Developer</h4>
+                        <div class="flex flex-wrap justify-between items-center mt-1 mb-2">
+                            <p class="text-sm font-medium text-gray-600 dark:text-gray-400 dark-mode-override">Digital Agency Startup</p>
+                            <span class="text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 px-2 py-1 rounded font-medium">Jun 2020 - Dec 2021</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-gray-700 dark:text-gray-300 dark-mode-override space-y-1.5">
+                            <li>Developed responsive, highly interactive UI components using React.js and Tailwind CSS.</li>
+                            <li>Collaborated closely with UX/UI designers to transform Figma designs into pixel-perfect web pages.</li>
+                            <li>Integrated RESTful APIs and managed application state using Redux.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white dark-mode-override mb-5 flex items-center gap-2">
+                        <i class="ph ph-rocket-launch text-primary"></i>
+                        <span>Notable Projects</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Project 1 -->
+                        <div class="border border-gray-200 dark:border-gray-700 dark-mode-override p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-900 dark:text-gray-100 dark-mode-override">TaskMaster App</h4>
+                                <a href="#" class="text-primary hover:text-blue-700"><i class="ph ph-link text-lg"></i></a>
+                            </div>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 dark-mode-override mb-3">A full-stack Kanban board application with real-time updates using WebSockets.</p>
+                            <div class="flex flex-wrap gap-1 mt-auto">
+                                <span class="px-1.5 py-0.5 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded text-[10px] font-semibold">React</span>
+                                <span class="px-1.5 py-0.5 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 rounded text-[10px] font-semibold">Node.js</span>
+                                <span class="px-1.5 py-0.5 bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300 rounded text-[10px] font-semibold">Socket.io</span>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="border border-gray-200 dark:border-gray-700 dark-mode-override p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-900 dark:text-gray-100 dark-mode-override">DevPortfolio Template</h4>
+                                <a href="#" class="text-primary hover:text-blue-700"><i class="ph ph-github-logo text-lg"></i></a>
+                            </div>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 dark-mode-override mb-3">Open-source minimal portfolio template for developers. Starred 500+ times on GitHub.</p>
+                            <div class="flex flex-wrap gap-1 mt-auto">
+                                <span class="px-1.5 py-0.5 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 rounded text-[10px] font-semibold">HTML5</span>
+                                <span class="px-1.5 py-0.5 bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-300 rounded text-[10px] font-semibold">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Dark Mode Toggle Logic ---
+        function toggleTheme() {
+            const htmlClass = document.documentElement.classList;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (htmlClass.contains('dark')) {
+                htmlClass.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('ph-sun', 'ph-moon'); // Switch to moon icon (to activate dark)
+            } else {
+                htmlClass.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('ph-moon', 'ph-sun'); // Switch to sun icon (to activate light)
+            }
+        }
+
+        // Initialize Theme from localStorage or system preference on load
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const themeIcon = document.getElementById('themeIcon');
+
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.classList.add('dark');
+                themeIcon.classList.replace('ph-moon', 'ph-sun');
+            }
+        };
+    </script>
+</body>
+</html>
